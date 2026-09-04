@@ -1,6 +1,5 @@
-#include "../include/tset.h"
-
-#include "../gtest/gtest.h"
+#include "gtest.h"
+#include "tset.h"
 
 TEST(TSet, can_get_max_power_set)
 {
