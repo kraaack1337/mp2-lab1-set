@@ -1,6 +1,6 @@
-#include "tbitfield.h"
+#include "../include/tbitfield.h"
 
-#include <gtest.h>
+#include "../gtest/gtest.h"
 
 TEST(TBitField, can_create_bitfield_with_positive_length)
 {
@@ -66,7 +66,7 @@ TEST(TBitField, throws_when_set_bit_with_too_large_index)
 {
   TBitField bf(10);
 
-  ASSERT_ANY_THROW(bf.SetBit(11));
+  ASSERT_ANY_THROW(bf.SetBit(11));в
 }
 
 TEST(TBitField, throws_when_get_bit_with_negative_index)

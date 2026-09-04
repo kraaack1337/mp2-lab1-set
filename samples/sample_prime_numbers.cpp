@@ -1,4 +1,4 @@
-﻿// ННГУ, ВМК, Курс "Методы программирования-2", С++, ООП
+// ННГУ, ВМК, Курс "Методы программирования-2", С++, ООП
 //
 // sample_prime_numbers.cpp - Copyright (c) Гергель В.П. 20.08.2000
 //   Переработано для Microsoft Visual Studio 2008 Сысоевым А.В. (19.04.2015)
@@ -12,7 +12,7 @@
 
 #ifndef USE_SET // Использовать класс TBitField
 
-#include "tbitfield.h"
+#include "../include/tbitfield.h"
 
 int main()
 {
@@ -52,7 +52,7 @@ int main()
 }
 #else
 
-#include "tset.h"
+#include "../include/tset.h"
 
 int main()
 {
