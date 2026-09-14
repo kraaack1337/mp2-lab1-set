@@ -65,7 +65,7 @@ TEST(TBitField, throws_when_set_bit_with_too_large_index)
 {
   TBitField bf(10);
 
-  ASSERT_ANY_THROW(bf.SetBit(11));в
+  ASSERT_ANY_THROW(bf.SetBit(11));
 }
 
 TEST(TBitField, throws_when_get_bit_with_negative_index)
