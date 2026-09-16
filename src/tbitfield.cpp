@@ -164,14 +164,14 @@ TBitField TBitField::operator|(const TBitField &bf) // операция "или"
         bf_temp.pMem[i] = pMem[i] | bf.pMem[i];
     }
 
-    if (BitLen > bf.BitLen){
+    if  (MemLen > min_memlen){
         
         for (int i = min_memlen; i < MemLen; i++){
             bf_temp.pMem[i] = pMem[i];
         }
     }
 
-    else if (bf. BitLen > BitLen){
+    else if (bf.MemLen > min_memlen){
 
         for (int i = min_memlen; i < bf.MemLen; i++){
             bf_temp.pMem[i] = bf.pMem[i];
@@ -209,13 +209,40 @@ TBitField TBitField::operator~(void) // отрицание
 
     if (bad_bit_ind != 0 && MemLen > 0){
 
-        TELEM mask = ((TELEM)1 << bad_bit_ind) - (TELEM)1; //delaem 
-        bf_temp.pMem[MemLen - 1] &= mask;
+        TELEM mask = ((TELEM)1 << bad_bit_ind) - (TELEM)1; //vichitaem 1, chtobi poluchilas'
+                                                           //maska iz edinits na meste pMem[Memlen - 1]
+        bf_temp.pMem[MemLen - 1] &= mask;                  //primer: 1000 - 1 = 0111
     }
 
     return bf_temp;
 }
 
+TBitField TBitField::operator^(const TBitField &bf){ //XOR
+    
+    int bitlen_temp = std::max(BitLen, bf.BitLen);
+    TBitField bf_temp = TBitField(bitlen_temp);
+
+    int min_memlen = std::min(MemLen, bf.MemLen);
+
+    for (int i = 0; i < min_memlen; i++){
+        bf_temp.pMem[i] = pMem[i] ^ bf.pMem[i];
+    }
+
+    if (MemLen > min_memlen) {
+
+        for (int i = min_memlen; i < MemLen; i++) {
+            bf_temp.pMem[i] = pMem[i];
+        }
+
+    } else if (bf.MemLen > min_memlen) {
+
+        for (int i = min_memlen; i < bf.MemLen; i++) {
+            bf_temp.pMem[i] = bf.pMem[i];
+        }
+    }
+
+    return bf_temp;
+}
 // ввод/вывод
 
 std::istream &operator>>(std::istream &istr, TBitField &bf) // ввод

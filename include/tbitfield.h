@@ -41,6 +41,7 @@ public:
   TBitField  operator|(const TBitField &bf); // операция "или"            (#О6)
   TBitField  operator&(const TBitField &bf); // операция "и"              (#Л2)
   TBitField  operator~(void);                // отрицание                  (#С)
+  TBitField  operator^(const TBitField &bf);  // XOR
 
   friend std::istream &operator>>(std::istream &istr, TBitField &bf);       //      (#О7)
   friend std::ostream &operator<<(std::ostream &ostr, const TBitField &bf); //      (#П4)

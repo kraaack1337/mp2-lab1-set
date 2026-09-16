@@ -36,6 +36,7 @@ public:
   TSet operator+ (const TSet &s);  // объединение
   TSet operator* (const TSet &s);  // пересечение
   TSet operator~ (void);           // дополнение
+  TSet operator^ (const TSet &s);  // XOR
 
   friend std::istream &operator>>(std::istream &istr, TSet &bf);
   friend std::ostream &operator<<(std::ostream &ostr, const TSet &bf);

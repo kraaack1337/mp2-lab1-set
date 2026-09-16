@@ -8,15 +8,15 @@
 #include "tset.h"
 #include "tbitfield.h"
 
-TSet::TSet(int mp) :  BitField(mp), MaxPower(mp){}
+TSet::TSet(int mp) : MaxPower(mp), BitField(mp) {}
 
 
 // конструктор копирования
-TSet::TSet(const TSet &s): BitField(s.BitField), MaxPower(s.MaxPower) {}
+TSet::TSet(const TSet &s): MaxPower(s.MaxPower), BitField(s.BitField) {}
 
 
 // конструктор преобразования типа
-TSet::TSet(const TBitField &bf) : BitField(bf), MaxPower(bf.GetLength()) {}
+TSet::TSet(const TBitField &bf) : MaxPower(bf.GetLength()), BitField(bf) {}
 
 TSet::operator TBitField()
 {
@@ -42,6 +42,7 @@ void TSet::DelElem(const int Elem) // исключение элемента мн
 {
     BitField.ClrBit(Elem);
 }
+
 
 // теоретико-множественные операции
 
@@ -96,6 +97,11 @@ TSet TSet::operator*(const TSet &s) // пересечение
 TSet TSet::operator~(void) // дополнение
 {
     return TSet(~BitField);
+}
+
+TSet TSet::operator^(const TSet &s) //XOR
+{
+    return TSet(BitField ^ s.BitField);
 }
 
 // перегрузка ввода/вывода
