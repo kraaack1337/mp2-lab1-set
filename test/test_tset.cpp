@@ -294,3 +294,29 @@ TEST(TSet, check_negation_operator)
 
   EXPECT_EQ(expSet, set1);
 }
+
+TEST(TSet, xor_operator_applied_to_tset_of_non_equal_size){
+  const int size_1 = 5;
+  const int size_2 = 8;
+
+  TSet set1(size_1), set2(size_2), expSet(size_2);
+
+  // s1 = { 1, 3 }
+  set1.InsElem(1);
+  set1.InsElem(3);
+
+  // s2 = { 3, 4, 7 }
+  set2.InsElem(3);
+  set2.InsElem(4);
+  set2.InsElem(7);
+
+  // expSet = { 1, 4, 7 }
+  expSet.InsElem(1);
+  expSet.InsElem(4);
+  expSet.InsElem(7);
+
+  TSet resultSet = set1 ^ set2;
+
+  EXPECT_EQ(expSet, resultSet);
+
+}
