@@ -67,12 +67,12 @@ int TSet::operator!=(const TSet &s) const // сравнение
     return !(*this == s );
 }
 
-TSet TSet::operator+(const TSet &s) // объединение
+TSet TSet::operator+(const TSet &s) const// объединение
 {
     return TSet(BitField | s.BitField);
 }
 
-TSet TSet::operator+(const int Elem) // объединение с элементом
+TSet TSet::operator+(const int Elem) const// объединение с элементом
 {
     
     TSet temp_set(*this);
@@ -81,7 +81,7 @@ TSet TSet::operator+(const int Elem) // объединение с элемент
     return temp_set;
 }
 
-TSet TSet::operator-(const int Elem) // разность с элементом
+TSet TSet::operator-(const int Elem) const// разность с элементом
 {
     TSet temp_set(*this);
     temp_set.DelElem(Elem);
@@ -89,17 +89,17 @@ TSet TSet::operator-(const int Elem) // разность с элементом
     return temp_set;
 }
 
-TSet TSet::operator*(const TSet &s) // пересечение
+TSet TSet::operator*(const TSet &s) const // пересечение
 {
     return TSet(BitField & s.BitField);
 }
 
-TSet TSet::operator~(void) // дополнение
+TSet TSet::operator~(void) const// дополнение
 {
     return TSet(~BitField);
 }
 
-TSet TSet::operator^(const TSet &s) //XOR
+TSet TSet::operator^(const TSet &s) const//XOR
 {
     return TSet(BitField ^ s.BitField);
 }

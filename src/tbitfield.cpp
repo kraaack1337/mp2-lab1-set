@@ -154,7 +154,7 @@ int TBitField::operator!=(const TBitField &bf) const // сравнение
   return !(*this == bf);
 }
 
-TBitField TBitField::operator|(const TBitField &bf) // операция "или"
+TBitField TBitField::operator|(const TBitField &bf) const// операция "или"
 {
     int bitLen_temp = std::max(BitLen, bf.BitLen);
     TBitField bf_temp = TBitField(bitLen_temp);
@@ -181,7 +181,7 @@ TBitField TBitField::operator|(const TBitField &bf) // операция "или"
     return bf_temp;
 }
 
-TBitField TBitField::operator&(const TBitField &bf) // операция "и"
+TBitField TBitField::operator&(const TBitField &bf) const // операция "и"
 {
     int bitLen_temp = std::max(BitLen, bf.BitLen);
     TBitField bf_temp = TBitField(bitLen_temp);
@@ -195,7 +195,7 @@ TBitField TBitField::operator&(const TBitField &bf) // операция "и"
     return bf_temp;
 }
 
-TBitField TBitField::operator~(void) // отрицание
+TBitField TBitField::operator~(void) const // отрицание
 {
     TBitField bf_temp = TBitField(BitLen);
 
@@ -217,7 +217,7 @@ TBitField TBitField::operator~(void) // отрицание
     return bf_temp;
 }
 
-TBitField TBitField::operator^(const TBitField &bf){ //XOR
+TBitField TBitField::operator^(const TBitField &bf) const{ //XOR
     
     int bitlen_temp = std::max(BitLen, bf.BitLen);
     TBitField bf_temp = TBitField(bitlen_temp);
